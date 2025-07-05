@@ -1,6 +1,6 @@
-import java.util.Scanner;
 
 public class Automobile {
+	private int id;
 	private String make;
 	private String model;
 	private String color;
@@ -8,6 +8,7 @@ public class Automobile {
 	private int mileage;
 	
 	public Automobile() {
+		this.id = 1;
 		this.make = "none specified";
 		this.model = "none specified";
 		this.color = "none specified";
@@ -15,21 +16,30 @@ public class Automobile {
 		this.mileage = 0;
 	}
 	
-	public Automobile(String makeParam, String modelParam, String colorParam, int yearParam, int mileageParam) {
-		this.make = makeParam;
-		this.model = modelParam;
-		this.color = colorParam;
+	public Automobile(String makeParam, String modelParam, String colorParam, 
+			int yearParam, int mileageParam) {
+		this.make = makeParam.trim();
+		this.model = modelParam.trim();
+		this.color = colorParam.trim();
 		this.year = yearParam;
 		this.mileage = mileageParam;
 	}
 	
-	public static void addNewVehicle(Scanner scnr) {
-		
+	//works with addNewVehicle() in InventoryManagement class creating an auto-incremented id field
+	public void setId(int id) {
+		this.id = id;
 	}
 	
-	//return string array (loop through array to print)
+	public int getId() {
+		return id;
+	}
+	
+	//echo user input before adding vehicle object to inventory
 	public String[] listVehicleInfo() {
-		return new String[] {"test", "one", "two", "three"};
+		String[] listInfo = new String[] {"ID number: " + this.id, "Make: " + this.make,
+				"Model: " + this.model, "Color: " + this.color, "Year: " + this.year,
+				"Mileage: " + this.mileage};
+		return listInfo;
 	}
 	
 	public String removeVehicle() {
@@ -40,23 +50,3 @@ public class Automobile {
 		
 	}
 }
-
-/*
-System.out.println("--Model:");
-System.out.println("--Color:");
-System.out.println("--Year:");
-System.out.println("--Mileage:");
-
-String make = "";
-String model = "";
-String color = "";
-int year = 0;
-int mileage = 0;
-final String[] ATTRIBUTE_LIST = {"make", "model", "color", "year", "mileage"};
-String[] vehicleInput = new String[5];
-
-System.out.println("To add a new vehicle to inventory, please provide the following:\n");
-System.out.println("--Make:");
-for (int i = 0; i < vehicleInput.length; i++) {
-}
-*/
